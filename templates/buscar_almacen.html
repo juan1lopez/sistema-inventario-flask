@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: black;
+            color: rgb(95, 255, 0);
+            display: flex;
+            flex-direction: column; /* Cambia la dirección principal a columna */
+            align-items: center; /* Centra horizontalmente */
+            text-align: center; /* Alinea el texto en el centro */
+        }
+
+        .boton {
+            display: inline-block;
+            margin-left: 50%;
+            text-decoration: none;
+            background-color: black;
+            color: rgb(95, 255, 0);
+            padding: 7px 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .boton:hover {
+            background-color: rgb(95, 255, 0);
+            color: black;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .formulario {
+            width: 60%;
+            margin-right: 2%;
+            padding: 20px 10px;
+            background-color: black;
+            border: 1px solid rgb(95, 255, 0);
+            border-radius: 5px;
+            display: inline-block;
+            color: rgb(95, 255, 0);
+            position: absolute;
+        }
+
+        label {
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type=number], textarea, select {
+            font-family: 'Roboto Mono', monospace;
+            background-color: black;
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            color: rgb(95, 255, 0);
+        }
+
+        select {
+            font-family: 'Roboto Mono', monospace;
+            color: gray;
+            background-color: black;
+        }
+
+        option {
+            font-family: 'Roboto Mono', monospace;
+            color: rgb(95, 255, 0);
+            background-color: gray;
+        }
+
+        input[type="submit"] {
+            background-color: rgb(95, 255, 0);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            display: inline-block;
+        }
+
+        .mitad {
+            flex: 1;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid rgb(95, 255, 0);
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: black;
+            color: rgb(95, 255, 0);
+        }
+
+        .layout {
+            width: 100%;
+            display: flex;
+            gap: 16px;
+        }
+
+        .grow1 {
+            flex-grow: 1;
+            background-color: black;
+            border: 1px solid rgb(95, 255, 0);
+            border-radius: 5px;
+            color: rgb(95, 255, 0);
+            margin-top: 20px;
+            padding: 20px;
+            max-width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .grow1 {
+                flex: 1;
+            }
+        }
+    </style>
+    <title>Sistema de Inventario</title>
+    <link rel="stylesheet" href="camiones.css">
+</head>
+<body>
+    <h1>Sistema de Inventario</h1>
+    <br>
+    <main>
+        <section class="layout">
+            <div class="grow1">
+                <form method="POST" action="{{url_for('process_buscar_almacen')}}">
+                    <select id="query" name="query">
+                        {% for nombre in almacenes %}
+                            <option value="{{ nombre }}">{{ nombre }}</option>
+                        {% endfor %}
+                    </select>                    
+                    <input type="submit" value="Buscar">
+                </form>                
+
+                <section>
+                    <h2>Inventario de Repuestos de la Máquina</h2>
+                    <table>
+                        <tr>
+                            <th>Número de Parte</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>stock</th>
+                            <th>precio sin IVA</th>
+                            <th>Precio con IVA</th>
+                            <th>Proveedor</th>
+                            <th>Equipo</th>
+                        </tr>
+                        {% for row in resultado %}
+                        <tr>
+                            <td>{{ row.ID }}</td>
+                            <td>{{ row.Nombre }}</td>
+                            <td>{{ row.Descripcion }}</td>
+                            <td>{{ row.Stock }}</td>
+                            <td>{{ row.PrecioSinIVA }}</td>
+                            <td>{{ row.PrecioConIVA }}</td>    
+                            <td>{{ row.ID_proveedor }}</td>
+                            <td>{{ row.ID_maquina }}</td>
+
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </section>
+            </div>
+            <div class="grow1">
+                <section>
+                    <h2>Inventario de Máquinas</h2>
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Ubicacion</th>
+                        
+                        </tr>
+                        {% for row in almacenes_data %}
+                        <tr>
+                            <td>{{ row.ID }}</td>
+                            <td>{{ row.Nombre }}</td>
+                            <td>{{ row.Ubicacion }}</td>
+
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </section>
+            </div>
+        </section>
+    </main>
+    <br>
+    <br>
+    <a href="{{url_for('index')}}" class="boton"> volver atras</a>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+
+/*
+
+
+
+.agregar{
+    height: 90%;
+    background-color: black;
+    border: solid;
+    border-radius: 10px;
+    text-align: center;
+    padding: 8px;
+    opacity: 75%;
+    margin: 12px;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+@keyframes slide {
+    50% { transform: translateY(8px); }
+  
+}
+
+div:hover{
+    background-color: gray;
+    animation: slide 1s ;
+
+}
+
+
+
+@media (max-width: 768px) {
+    .layout {
+        grid-template-columns: 1fr; 
+    }
+
+    .buscar,
+    .buscar1,
+    .eliminar {
+        width: 100%;  
+        max-width: none;
+    }
+}
+*/
+
+body{
+    font-family: 'Roboto Mono', monospace;
+    background-color: black;
+    color: rgb(99,255,0);
+
+}
+h1{
+    text-align: center;
+}
+.layout {
+    width: 100%; 
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+
+}
+
+@keyframes slide {
+    50% { transform: translateY(8px); }  
+}
+
+div:hover{
+    background-color: gray;
+    animation: slide 1s ;
+
+}
+.agregar{
+    height: 160px;
+    border: solid rgb(99,255,0);
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    text-align: center;
+    opacity: 75%;
+    color: rgb(99,255,0);
+}
+
+
+
+p{
+    display: inline;
+}
+.seccion img {
+    margin-top: 15px;
+    margin-right: 2%; 
+}
+a{
+    text-decoration: none;
+    color: initial;
+}

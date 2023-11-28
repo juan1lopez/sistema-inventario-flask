@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="eliminar_proveedor.css"> <!-- Reemplaza "tu-archivo-de-estilos.css" con la ruta a tu archivo CSS -->
+    <title>Eliminar Proveedor</title>
+    <style>
+        
+        body{
+        font-family: 'Roboto Mono', monospace;
+        background-color: black;
+        color: rgb(95,255,0);
+
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        /* Estilo para el formulario */
+        .formulario {
+            width: 60%;
+            margin-right: 2%; 
+            padding: 20px 10px;
+            background-color: black;
+            border: 1px solid rgb(95,255,0);
+            border-radius: 5px;
+            display: inline-block;
+            color: rgb(95,255,0);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        /* Estilo para las etiquetas */
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* Estilo para los campos de entrada de texto y el área de texto */
+        input[type="text"],textarea,select {
+            font-family: 'Roboto Mono', monospace;
+            background-color: black;
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgb(95,255,0);
+            border-radius: 5px;
+            color:rgb(95,255,0);
+        }
+        select{
+            font-family: 'Roboto Mono', monospace;
+            color: gray;
+            background-color: black;
+        }
+        option{
+            font-family: 'Roboto Mono', monospace;
+            color: rgb(95,255,0);
+            background-color: gray;
+        }
+
+
+        /* Estilo para el botón de Eliminar */
+        input[type="submit"] {
+            background-color: black;
+            color:rgb(95,255,0);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color:rgb(95,255,0);
+            color:black;
+        }
+
+
+
+        /* Estilo para el botón de Volver atras */
+
+        .boton {
+            display: inline-block;
+            margin-left: 50%; /* Ajusta el margen según tus preferencias */
+            text-decoration: none;
+            background-color: black;
+            color: rgb(95,255,0);
+            padding: 7px 5px ;
+            font-family: 'Roboto Mono', monospace;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .boton:hover {
+            background-color:rgb(95,255,0);
+            color:black;
+        }
+    </style>
+</head>
+<body>
+    {% if mensaje %}
+        <p> {{mensaje}}</p>
+    {% endif %}
+    <h1>Eliminar Proveedor</h1>
+    <div class="formulario">
+        <form method="POST" action="{{url_for('process_eliminar_proveedor')}}">
+            <select id="query" name="query">
+                {% for nombre in proveedores %}
+                    <option value="{{ nombre }}">{{ nombre }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Eliminar"> <a href="{{url_for('index')}}" class="boton"> volver atras</a>
+        </form>
+
+
+    </div>
+    
+</body>
+</html>

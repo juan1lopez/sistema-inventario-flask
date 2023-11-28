@@ -1,0 +1,19 @@
+   /* Estilos generales para los botones */
+   button {
+    width: 150px; /* Ancho cuadrado grande */
+    height: 150px; /* Alto cuadrado grande */
+    font-size: 16px; /* Tamaño del texto */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: auto;
+  }
+
+  /* Establecer una disposición en línea para los div que contienen los botones */
+  div {
+    display: flex;
+    margin: 10px;
+    padding: 10px; /* Añade un margen para separar los botones */
+  }

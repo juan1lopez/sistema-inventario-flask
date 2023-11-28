@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: black;
+            color: rgb(95,255,0);
+        }
+
+        #header {
+            text-align: right;
+            padding: 10px;
+        }
+
+        .layout {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            
+            
+        }
+
+        .layout div {
+            
+            border: solid rgb(95, 255, 0);
+            padding: 120px;
+            padding-left: 130px;
+            padding-right: 130px;
+            margin-top: 150px;
+            border-radius: 8px;
+            flex: 1; /* Distribuye el espacio equitativamente entre los divs */
+            max-width: 300px; /* Establece un ancho máximo para todos los divs */
+        }
+        .boton {
+            text-align: center;
+            display: inline-block;
+            margin-left: 45%; /* Ajusta el margen según tus preferencias */
+            text-decoration: none;
+            background-color: black;
+            color: rgb(95,255,0);
+            padding: 7px 5px ;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .layout div a {
+            font-family: 'Roboto Mono', monospace;
+            background-color: black;
+            color: rgb(95,255,0);
+        }
+    
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <section class="layout">
+        <div><a href="{{url_for('grafico_proveedores')}}">transacciones de proveedores</a></div>
+        <div><a href="{{url_for('grafico_camiones')}}">transacciones de camiones</a></div>
+        <div><a href="{{url_for('grafico_almacenes')}}">transacciones de almacenes</a></div>
+    </section>
+    <a href="{{url_for('index')}}" class="boton"> volver atras</a>
+</body>
+</html>

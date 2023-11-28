@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="repuesto.css">
+    <style>
+        body{
+            font-family: 'Roboto Mono', monospace;
+            background-color: black;
+            color: rgb(95,255,0);
+
+        }
+
+        .boton {
+            display: inline-block;
+            margin-left: 50%; /* Ajusta el margen según tus preferencias */
+            text-decoration: none;
+            background-color: black;
+            color: rgb(95,255,0);
+            padding: 7px 5px ;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .boton:hover {
+            background-color:rgb(95,255,0);
+            color:black;
+        }
+        /* Estilo para el formulario */
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 10px;
+
+        }
+
+        .formulario {
+            width: 60%;
+            margin-right: 2%; 
+            padding: 20px 10px;
+            background-color: black;
+            border: 1px solid rgb(95,255,0);
+            border-radius: 5px;
+            display: inline-block;
+            color: rgb(95,255,0);
+            margin-left: 20%;
+        }
+
+
+        /* Estilo para las etiquetas */
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* Estilo para los campos de entrada de texto y el área de texto */
+        input[type="text"],input[type=number],textarea,select {
+            font-family: 'Roboto Mono', monospace;
+            background-color: black;
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            color: rgb(95,255,0);
+        }
+        select{
+            font-family: 'Roboto Mono', monospace;
+            color: gray;
+            background-color: black;
+        }
+        option{
+            font-family: 'Roboto Mono', monospace;
+            color: rgb(95,255,0);
+            background-color: gray;
+        }
+        /* Estilo para el botón de enviar */
+        input[type="submit"] {
+            background-color: rgb(95,255,0);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Formulario de Producto</title>
+</head>
+<body>
+    {% if mensaje %}
+        <p> {{mensaje}}</p>
+    {% endif %}
+    <h1>Formulario de Producto</h1>
+    <div class="formulario">
+        <form action="{{url_for('process')}}" method="POST">
+
+            <label for="nombre"  >Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <br>
+
+            <label for="descripcion">Descripcion:</label>
+            <textarea name="descripcion" id="" cols="30" rows="10"></textarea>
+            <br>
+
+            <label for="equipo">a que equipo le corresponde:</label>
+            <select id="equipo" name="equipo">
+                {% for nombre in camiones %}
+                    <option value="{{ nombre }}">{{ nombre }}</option>
+                {% endfor %}
+            </select>
+            <p>su equipo es nuevo? <a href="{{url_for('processcamion')}}">clik aqui</a></p>
+            <br>
+            <label for="proveedor">a que proveedor le corresponde:</label>
+            <select id="proveedor" name="proveedor">
+                {% for nombre in proveedores %}
+                    <option value="{{ nombre }}">{{ nombre }}</option>
+                {% endfor %}
+            </select>            
+            <p>su proveedor es nuevo? <a href="{{url_for('processproveedor')}}">clik aqui</a></p>
+            <br>
+            <label for="almacen">a que almacen le corresponde:</label>
+            <select id="almacen" name="almacen">
+                {% for nombre in almacenes %}
+                    <option value="{{ nombre }}">{{ nombre }}</option>
+                {% endfor %}
+            </select>
+            <p>su almacen es nuevo? <a href="{{url_for('processalmacen')}}">clik aqui</a></p>
+
+            <br>
+            <label for="precioSinIVA">Precio sin IVA:</label>
+            <input type="number" id="precioSinIVA" name="precioSinIVA" placeholder="Ingresa el precio sin IVA" required>
+
+            <label for="precioConIVA">Precio más el IVA:</label>
+            <input type="number" id="precioConIVA" name="precioConIVA" placeholder="Ingresa el precio con IVA" required>
+            <br>
+            <label for="stock">ingrese el stock que desea cargar:</label>
+            <input type="number" id="stock" name="stock" placeholder="1" required>
+            
+            <input type="submit" value="Guardar Datos"> <a href="{{url_for('index')}}" class="boton"> volver atras</a>
+        </form>
+    </div>
+</body>
+</html>

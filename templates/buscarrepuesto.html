@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="buscar.css">
+    <title>Buscar Repuesto</title>
+</head>
+<body>
+    
+    <h1>Buscar Repuesto</h1>
+    <form action="#" method="post">
+        <div class="formulario">
+
+            <label>Nombre del Repuesto:</label>
+            <br>
+            <input type="text" placeholder="Ingrese nombre del repuesto"><br><br>
+
+            <label>Descripción:</label>
+            <br>
+            <input type="text" placeholder="Ingrese la descripcion"><br><br>
+
+            <label>Proveedor:</label>
+            <br>
+            <input type="text" placeholder="Ingrese el proveedor"><br><br>
+
+            <label >Almacén:</label>
+            <br>
+            <input type="text" placeholder="Ingrese el almacen"><br><br>
+
+            <label>Categoría:</label>
+            <br>
+            <input type="text" placeholder="Ingrese la categoria"><br><br>
+
+            <label for="maquina">Máquina Asociada:</label>
+            <br>
+            <input type="text" placeholder="Ingrese la maquina asociada"><br><br>
+
+            <label>ID de Repuesto:</label>
+            <br>
+            <input type="text" placeholder="Ingrese el ID del repuesto"><br><br>
+
+            <input type="submit" value="Guardar Datos"> 
+        </div>
+
+    </form>
+    <a href="{{url_for('index')}}" class="boton"> volver atras</a>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="camiones.css">
+    <title>Módulo de Repuestos Utilizados</title>
+    <style>
+        
+        body{
+        font-family: 'Roboto Mono', monospace;
+        background-color: black;
+        color: rgb(95,255,0);
+
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        /* Estilo para el formulario */
+        .formulario {
+            width: 60%;
+            margin-right: 2%; 
+            padding: 20px 10px;
+            background-color: black;
+            border: 1px solid rgb(95,255,0);
+            border-radius: 5px;
+            display: inline-block;
+            color: rgb(95,255,0);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        /* Estilo para las etiquetas */
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* Estilo para los campos de entrada de texto y el área de texto */
+        input[type="text"],textarea,select {
+            font-family: 'Roboto Mono', monospace;
+            background-color: black;
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgb(95,255,0);
+            border-radius: 5px;
+            color:rgb(95,255,0);
+        }
+        select{
+            font-family: 'Roboto Mono', monospace;
+            color: gray;
+            background-color: black;
+        }
+        option{
+            font-family: 'Roboto Mono', monospace;
+            color: rgb(95,255,0);
+            background-color: gray;
+        }
+
+
+        /* Estilo para el botón de Eliminar */
+        input[type="submit"] {
+            background-color: black;
+            color:rgb(95,255,0);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color:rgb(95,255,0);
+            color:black;
+        }
+
+
+
+        /* Estilo para el botón de Volver atras */
+
+        .boton {
+            display: inline-block;
+            margin-left: 50%; /* Ajusta el margen según tus preferencias */
+            text-decoration: none;
+            background-color: black;
+            color: rgb(95,255,0);
+            padding: 7px 5px ;
+            font-family: 'Roboto Mono', monospace;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .boton:hover {
+            background-color:rgb(95,255,0);
+            color:black;
+        }
+    </style>
+</head>
+<body>
+    {% if mensaje %}
+        <p> {{mensaje}}</p>
+    {% endif %}
+    <div class="formulario">
+        <h2>Registrar Repuesto Utilizado</h2>
+        <form action="{{url_for('process_repuestoutilizado')}}" method="POST" >
+            
+
+            <label for="nombre">Repuesto Utilizado:</label>
+            <select id="nombre" name="nombre">
+                {% for nombre in repuestos %}
+                    <option value="{{ nombre }}">{{ nombre }}</option>
+                {% endfor %}
+            </select> 
+            <!-- aa 
+            <label for="equipo">a que equipo le corresponde:</label>
+            <select id="equipo" name="equipo">
+                {% for nombre in camiones %}
+                    <option value="{{ nombre }}">{{ nombre }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="proveedor">a que proveedor le corresponde:</label>
+            <select id="proveedor" name="proveedor">
+                {% for nombre in proveedores %}
+                    <option value="{{ nombre }}">{{ nombre }}</option>
+                {% endfor %}
+            </select> 
+            <label for="almacen">a que almacen le corresponde:</label>
+            <select id="almacen" name="almacen">
+                {% for nombre in almacenes %}
+                    <option value="{{ nombre }}">{{ nombre }}</option>
+                {% endfor %}
+            </select>
+             llll -->
+            <label for="fecha">Añanda la fecha de salida</label>
+            <input type="date" name="fecha">
+            
+            <label for="cantidad">Cantidad Utilizada:</label>
+            <input type="number" id="cantidad" name="cantidad" required>
+            <br>
+
+            <input type="submit" value="Registrar"> <a href="{{url_for('index')}}" class="boton"> volver atras</a>
+        </form>
+    </div>
+</body>
+</html>

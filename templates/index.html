@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <title>Yanzon SRL</title>
+</head>
+<body>
+    <h1>Yanzon SRL</h1>
+    <section class="layout">
+        <section class="eliminar">
+            <a href="{{ url_for('processproveedor') }}">
+                <div class="seccion1">
+                    <img src="{{ url_for('static', filename='iconos/iconizer-user-add.svg')}}" height="20px"width="20px"> agregar proveedor
+
+                </div>
+            </a>
+            <a href="{{url_for('process')}}">
+                <div class="seccion1">
+                    <img src="{{ url_for('static', filename='iconos/iconizer-llave-fija.svg')}}" height="20px"width="20px"> agregar repuesto
+                </div>
+            </a>
+            <a href="{{url_for('processcamion')}}">
+                <div class="seccion1">
+                    <img src="{{ url_for('static', filename='iconos/iconizer-camion-2d.svg')}}" height="20px"width="20px"> agregar equipos
+                </div>
+            </a>
+            <a href="{{ url_for('processalmacen') }}">
+                <div class="seccion1">
+                    <img src="{{ url_for('static', filename='iconos/iconizer-almacen-2d.svg')}}" height="20px"width="20px"> agregar almacen
+                </div>
+            </a>
+        </section>
+        
+        <section class="eliminar">
+            <a href="{{url_for('process_buscar_repuesto')}}">
+                <div class="seccion1">
+                    <img src="{{ url_for('static', filename='iconos/iconizer-lupa.svg')}}" height="20px"width="20px"><img src="{{ url_for('static', filename='iconos/iconizer-llave-fija.svg')}}" height="20px"width="20px"> buscar repuesto
+                </div>
+            </a>
+            <a href="{{url_for('process_buscar_maquinaria')}}">
+                <div class="seccion1">
+                    <img src="{{ url_for('static', filename='iconos/iconizer-lupa.svg')}}" height="20px"width="20px"><img src="{{ url_for('static', filename='iconos/iconizer-camion-2d.svg')}}" height="20px"width="20px"><img src="{{ url_for('static', filename='iconos/iconizer-excabadora.svg')}}" height="20px"width="20px">buscar maquinaria
+                </div>
+            </a>
+            <a href="{{url_for('process_buscar_almacen')}}">
+                <div class="seccion1">
+                    <img src="{{ url_for('static', filename='iconos/iconizer-lupa.svg')}}" height="20px"width="20px"><img src="{{ url_for('static', filename='iconos/iconizer-almacen-2d.svg')}}" height="20px"width="20px"> buscar por almacen
+                </div>
+            </a>
+            <a href="{{url_for('process_buscar_proveedor')}}">
+                <div class="seccion1">
+                    <img src="{{ url_for('static', filename='iconos/iconizer-lupa.svg')}}" height="20px"width="20px"><img src="{{ url_for('static', filename='iconos/iconizer-user.svg')}}" height="20px"width="20px"> buscar por proveedor
+                </div>
+            </a>
+        </section>
+        <section class="eliminar">
+            <a href="{{url_for('process_eliminar_repuesto')}}">
+                <div class="seccion1"> 
+                <img src="{{ url_for('static', filename='iconos/iconizer-cruz.svg')}}" alt="" height="20px" width="20px"> eliminar repuesto
+                </div>
+            </a>
+            <a href="{{url_for('process_eliminar_maquinaria')}}">
+                <div class="seccion1"> 
+                    <img src="{{ url_for('static', filename='iconos/iconizer-cruz.svg')}}" alt="" height="20px" width="20px"> eliminar maquinaria
+                </div>
+            </a>
+            <a href="{{url_for('process_eliminar_proveedor')}}">
+                <div class="seccion1"> 
+                    <img src="{{ url_for('static', filename='iconos/iconizer-cruz.svg')}}" alt="" height="20px" width="20px"> eliminar proveedor
+                </div>
+            </a>
+            <a href="{{url_for('process_eliminar_almacen')}}">
+                <div class="seccion1"> 
+                    <img src="{{ url_for('static', filename='iconos/iconizer-cruz.svg')}}" alt="" height="20px" width="20px"> eliminar almacen
+                </div>
+            </a>
+        </section>
+
+    </section>
+    <section class="conteiner">
+        <a href="{{url_for('process_cargarrepuesto')}}">
+            <div class="buscar"><img src="{{ url_for('static', filename='iconos/iconizer-system-solid-35-compare.svg')}}" height="20px"width="20px"><br>cargar nuevo stock</div>
+        </a>
+        <a href="{{url_for('process_repuestoutilizado')}}">
+            <div class="buscar"><img src="{{ url_for('static', filename='iconos/iconizer-trash.svg')}}" height="20px"width="20px"><br>repuesto utilizado</div>
+        </a>
+    </section>
+    <a href="{{url_for('process_consultas')}}">
+        <div class="consultas">
+            <img src="{{ url_for('static', filename='iconos/iconizer-system-solid-10-analytics.svg')}}" height="20px"width="20px"><br> consultas mensuales
+        </div>
+    </a>
+</body>
+</html>
